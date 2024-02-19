@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b0lirltu4mflp"]
+[gd_scene load_steps=15 format=3 uid="uid://b0lirltu4mflp"]
 
 [ext_resource type="PackedScene" uid="uid://cpxam4xk4egf2" path="res://scenes/player.tscn" id="1_73hgt"]
 [ext_resource type="Script" path="res://scripts/icicle_game.gd" id="1_jsahh"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d032n0mrd7o6j" path="res://assets/img/heart_full.png" id="5_obii6"]
 [ext_resource type="Texture2D" uid="uid://dxet38htucmi8" path="res://assets/img/heart_empty.png" id="6_es5cs"]
 [ext_resource type="Texture2D" uid="uid://cxq05w6ryodmq" path="res://assets/img/coin.png" id="7_wtweo"]
+[ext_resource type="Texture2D" uid="uid://dnmj7wvt037f" path="res://assets/img/secret.png" id="8_l1tcd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y6i5q"]
 size = Vector2(84, 6)
@@ -126,13 +127,30 @@ centered = false
 [node name="Temp" type="Node2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Temp"]
+visible = false
 position = Vector2(8, 24)
 sprite_frames = SubResource("SpriteFrames_uq0qf")
 autoplay = "default"
 centered = false
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Temp"]
+visible = false
 position = Vector2(68, 24)
 sprite_frames = SubResource("SpriteFrames_uq0qf")
 autoplay = "default"
 centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Temp"]
+visible = false
+position = Vector2(16, 12)
+texture = ExtResource("8_l1tcd")
+centered = false
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="IcicleTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="timeout" from="IcicleTimer" to="." method="_on_icicle_timer_timeout"]

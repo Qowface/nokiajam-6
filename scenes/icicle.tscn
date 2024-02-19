@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b7dhj2f74q6iv"]
+[gd_scene load_steps=13 format=3 uid="uid://b7dhj2f74q6iv"]
 
 [ext_resource type="Texture2D" uid="uid://duyeqceyw5vym" path="res://assets/img/icicle_grow.png" id="1_x3few"]
+[ext_resource type="Script" path="res://scripts/icicle.gd" id="1_x5vjb"]
+[ext_resource type="Texture2D" uid="uid://dbtfg7w2xtcrg" path="res://assets/img/icicle_wiggle.png" id="3_spepj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_20js3"]
 atlas = ExtResource("1_x3few")
@@ -13,6 +15,22 @@ region = Rect2(8, 0, 8, 8)
 [sub_resource type="AtlasTexture" id="AtlasTexture_kci0q"]
 atlas = ExtResource("1_x3few")
 region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhdqy"]
+atlas = ExtResource("3_spepj")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kd3ro"]
+atlas = ExtResource("3_spepj")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwcnj"]
+atlas = ExtResource("3_spepj")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ruv18"]
+atlas = ExtResource("3_spepj")
+region = Rect2(24, 0, 8, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8yv71"]
 animations = [{
@@ -29,18 +47,35 @@ animations = [{
 "loop": false,
 "name": &"grow",
 "speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhdqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kd3ro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vwcnj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ruv18")
+}],
+"loop": false,
+"name": &"wiggle",
+"speed": 15.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6kmwy"]
 size = Vector2(3, 7)
 
 [node name="Icicle" type="Area2D"]
+script = ExtResource("1_x5vjb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_8yv71")
 animation = &"grow"
-autoplay = "grow"
 frame = 2
 frame_progress = 1.0
 
