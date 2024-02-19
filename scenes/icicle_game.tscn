@@ -1,0 +1,138 @@
+[gd_scene load_steps=14 format=3 uid="uid://b0lirltu4mflp"]
+
+[ext_resource type="PackedScene" uid="uid://cpxam4xk4egf2" path="res://scenes/player.tscn" id="1_73hgt"]
+[ext_resource type="Script" path="res://scripts/icicle_game.gd" id="1_jsahh"]
+[ext_resource type="PackedScene" uid="uid://b7dhj2f74q6iv" path="res://scenes/icicle.tscn" id="3_scmh2"]
+[ext_resource type="FontFile" uid="uid://cxeg4c7rwp2y3" path="res://assets/fonts/lowrez/lowrez.png" id="4_tqb80"]
+[ext_resource type="Texture2D" uid="uid://d032n0mrd7o6j" path="res://assets/img/heart_full.png" id="5_obii6"]
+[ext_resource type="Texture2D" uid="uid://dxet38htucmi8" path="res://assets/img/heart_empty.png" id="6_es5cs"]
+[ext_resource type="Texture2D" uid="uid://cxq05w6ryodmq" path="res://assets/img/coin.png" id="7_wtweo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y6i5q"]
+size = Vector2(84, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hlnrq"]
+atlas = ExtResource("7_wtweo")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5u4ox"]
+atlas = ExtResource("7_wtweo")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hjvc"]
+atlas = ExtResource("7_wtweo")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcdv8"]
+atlas = ExtResource("7_wtweo")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uq0qf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hlnrq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5u4ox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hjvc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcdv8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="IcicleGame" type="Node2D"]
+script = ExtResource("1_jsahh")
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(0, 42)
+
+[node name="ColorRect" type="ColorRect" parent="Ground"]
+offset_right = 84.0
+offset_bottom = 6.0
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(42, 3)
+shape = SubResource("RectangleShape2D_y6i5q")
+
+[node name="Player" parent="." instance=ExtResource("1_73hgt")]
+position = Vector2(38, 34)
+
+[node name="Icicles" type="Node2D" parent="."]
+
+[node name="Icicle" parent="Icicles" instance=ExtResource("3_scmh2")]
+position = Vector2(2, 0)
+
+[node name="Icicle2" parent="Icicles" instance=ExtResource("3_scmh2")]
+position = Vector2(10, 0)
+
+[node name="Icicle3" parent="Icicles" instance=ExtResource("3_scmh2")]
+position = Vector2(18, 0)
+
+[node name="Icicle4" parent="Icicles" instance=ExtResource("3_scmh2")]
+position = Vector2(26, 0)
+
+[node name="Icicle5" parent="Icicles" instance=ExtResource("3_scmh2")]
+position = Vector2(34, 0)
+
+[node name="Icicle6" parent="Icicles" instance=ExtResource("3_scmh2")]
+position = Vector2(42, 0)
+
+[node name="Icicle7" parent="Icicles" instance=ExtResource("3_scmh2")]
+position = Vector2(50, 0)
+
+[node name="Icicle8" parent="Icicles" instance=ExtResource("3_scmh2")]
+position = Vector2(58, 0)
+
+[node name="Icicle9" parent="Icicles" instance=ExtResource("3_scmh2")]
+position = Vector2(66, 0)
+
+[node name="Icicle10" parent="Icicles" instance=ExtResource("3_scmh2")]
+position = Vector2(74, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+offset_left = 1.0
+offset_top = 43.0
+offset_right = 48.0
+offset_bottom = 49.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_tqb80")
+text = "0123456789"
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(66, 43)
+texture = ExtResource("5_obii6")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(72, 43)
+texture = ExtResource("5_obii6")
+centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(78, 43)
+texture = ExtResource("6_es5cs")
+centered = false
+
+[node name="Temp" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Temp"]
+position = Vector2(8, 24)
+sprite_frames = SubResource("SpriteFrames_uq0qf")
+autoplay = "default"
+centered = false
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Temp"]
+position = Vector2(68, 24)
+sprite_frames = SubResource("SpriteFrames_uq0qf")
+autoplay = "default"
+centered = false
