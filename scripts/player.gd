@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 
@@ -29,3 +30,7 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	position.x = clamp(position.x, 0, screen_size.x - 8)
+
+
+func die():
+	queue_free()
