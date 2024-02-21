@@ -18,10 +18,9 @@ func _ready():
 		icicle.hit_player.connect(_on_icicle_hit_player)
 		icicle.scored.connect(_on_icicle_scored)
 	
-	print("Lives: " + str(lives))
-	print("Score: " + str(score))
 	ui.set_score_label(score)
 	ui.update_hearts(lives)
+	ui.display_banner("GET READY")
 
 
 func _process(delta):
@@ -47,7 +46,6 @@ func _on_icicle_timer_timeout():
 
 func _on_icicle_hit_player():
 	lives -= 1
-	print("Lives: " + str(lives))
 	ui.update_hearts(lives)
 	if lives <= 0:
 		game_over()
@@ -55,14 +53,13 @@ func _on_icicle_hit_player():
 
 func _on_icicle_scored():
 	score += 10
-	print("Score: " + str(score))
 	ui.set_score_label(score)
 
 
 func game_over():
 	player.die()
-	print("Dead")
+	ui.display_banner("YOU DIED")
 	get_tree().paused = true
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(4.0).timeout
 	get_tree().paused = false
 	get_tree().reload_current_scene()
