@@ -1,11 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://b0lirltu4mflp"]
+[gd_scene load_steps=13 format=3 uid="uid://b0lirltu4mflp"]
 
 [ext_resource type="PackedScene" uid="uid://cpxam4xk4egf2" path="res://scenes/player.tscn" id="1_73hgt"]
 [ext_resource type="Script" path="res://scripts/icicle_game.gd" id="1_jsahh"]
 [ext_resource type="PackedScene" uid="uid://b7dhj2f74q6iv" path="res://scenes/icicle.tscn" id="3_scmh2"]
-[ext_resource type="FontFile" uid="uid://cxeg4c7rwp2y3" path="res://assets/fonts/lowrez/lowrez.png" id="4_tqb80"]
-[ext_resource type="Texture2D" uid="uid://d032n0mrd7o6j" path="res://assets/img/heart_full.png" id="5_obii6"]
-[ext_resource type="Texture2D" uid="uid://dxet38htucmi8" path="res://assets/img/heart_empty.png" id="6_es5cs"]
+[ext_resource type="PackedScene" uid="uid://cg07od16el00b" path="res://scenes/ui.tscn" id="4_8apqm"]
 [ext_resource type="Texture2D" uid="uid://cxq05w6ryodmq" path="res://assets/img/coin.png" id="7_wtweo"]
 [ext_resource type="Texture2D" uid="uid://dnmj7wvt037f" path="res://assets/img/secret.png" id="8_l1tcd"]
 
@@ -101,31 +99,7 @@ position = Vector2(66, 0)
 [node name="Icicle10" parent="Icicles" instance=ExtResource("3_scmh2")]
 position = Vector2(74, 0)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
-offset_left = 1.0
-offset_top = 43.0
-offset_right = 48.0
-offset_bottom = 49.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("4_tqb80")
-text = "0123456789"
-
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(66, 43)
-texture = ExtResource("5_obii6")
-centered = false
-
-[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(72, 43)
-texture = ExtResource("5_obii6")
-centered = false
-
-[node name="Sprite2D3" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(78, 43)
-texture = ExtResource("6_es5cs")
-centered = false
+[node name="UI" parent="." instance=ExtResource("4_8apqm")]
 
 [node name="Temp" type="Node2D" parent="."]
 

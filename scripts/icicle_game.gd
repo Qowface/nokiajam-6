@@ -8,6 +8,7 @@ var score = 0
 @onready var icicles = $Icicles
 @onready var start_timer = $Timers/StartTimer
 @onready var icicle_timer = $Timers/IcicleTimer
+@onready var ui = $UI
 
 
 func _ready():
@@ -19,6 +20,8 @@ func _ready():
 	
 	print("Lives: " + str(lives))
 	print("Score: " + str(score))
+	ui.set_score_label(score)
+	ui.update_hearts(lives)
 
 
 func _process(delta):
@@ -45,6 +48,7 @@ func _on_icicle_timer_timeout():
 func _on_icicle_hit_player():
 	lives -= 1
 	print("Lives: " + str(lives))
+	ui.update_hearts(lives)
 	if lives <= 0:
 		game_over()
 
@@ -52,6 +56,7 @@ func _on_icicle_hit_player():
 func _on_icicle_scored():
 	score += 10
 	print("Score: " + str(score))
+	ui.set_score_label(score)
 
 
 func game_over():
