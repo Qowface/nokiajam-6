@@ -4,6 +4,9 @@ extends Node2D
 var lives = 3
 var score = 0
 
+var icicle_speed = 10
+var score_increment = 10
+
 @onready var player = $Player
 @onready var icicles = $Icicles
 @onready var start_timer = $Timers/StartTimer
@@ -52,8 +55,9 @@ func _on_icicle_hit_player():
 
 
 func _on_icicle_scored():
-	score += 10
+	score += score_increment
 	ui.set_score_label(score)
+	speed_up_icicles()
 
 
 func game_over():
@@ -63,3 +67,12 @@ func game_over():
 	await get_tree().create_timer(4.0).timeout
 	get_tree().paused = false
 	get_tree().reload_current_scene()
+
+
+func speed_up_icicles():
+	icicle_speed += 1
+	score_increment = floor(icicle_speed / 10) * 10
+	print(icicle_speed)
+	print(score_increment)
+	for icicle in get_tree().get_nodes_in_group("icicles"):
+		icicle.fall_speed = icicle_speed
