@@ -17,6 +17,8 @@ var coin_scene = preload("res://scenes/coin.tscn")
 
 
 func _ready():
+	Stats.reset()
+	
 	start_timer.start()
 	
 	for icicle in get_tree().get_nodes_in_group("icicles"):
