@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhbhbpc7a5qof"]
+
+[ext_resource type="FontFile" uid="uid://cxeg4c7rwp2y3" path="res://assets/fonts/lowrez/lowrez.png" id="1_1fh0e"]
+[ext_resource type="Script" path="res://scripts/start_menu.gd" id="1_h3alx"]
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h3alx")
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 8.0
+offset_right = 82.0
+offset_bottom = 26.0
+text = "GAME NAME
+GOES HERE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 32.0
+offset_right = 82.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("1_1fh0e")
+text = "PRESS SPACE"
+horizontal_alignment = 1
+vertical_alignment = 1

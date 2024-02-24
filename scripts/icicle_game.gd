@@ -67,7 +67,7 @@ func game_over():
 	get_tree().paused = true
 	await get_tree().create_timer(4.0).timeout
 	get_tree().paused = false
-	get_tree().reload_current_scene()
+	SceneManager.change_scene("end")
 
 
 func speed_up_icicles():
