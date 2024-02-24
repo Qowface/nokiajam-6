@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhbhbpc7a5qof"]
+[gd_scene load_steps=8 format=3 uid="uid://bhbhbpc7a5qof"]
 
 [ext_resource type="FontFile" uid="uid://cxeg4c7rwp2y3" path="res://assets/fonts/lowrez/lowrez.png" id="1_1fh0e"]
 [ext_resource type="Script" path="res://scripts/start_menu.gd" id="1_h3alx"]
+[ext_resource type="Texture2D" uid="uid://cpeittwu562q3" path="res://assets/img/title.png" id="2_ottqy"]
 
 [sub_resource type="Animation" id="Animation_ofht1"]
 resource_name = "blink"
@@ -35,10 +36,26 @@ tracks/0/keys = {
 "values": [true, false, true, false, true]
 }
 
+[sub_resource type="Animation" id="Animation_tk7mn"]
+resource_name = "icicles"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IciclesTextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -40), Vector2(0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8vffg"]
 _data = {
 "blink": SubResource("Animation_ofht1"),
-"fast_blink": SubResource("Animation_a6x2x")
+"fast_blink": SubResource("Animation_a6x2x"),
+"icicles": SubResource("Animation_tk7mn")
 }
 
 [node name="StartMenu" type="Control"]
@@ -50,6 +67,19 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_h3alx")
 
+[node name="IciclesTextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = -40.0
+offset_right = 84.0
+texture = ExtResource("2_ottqy")
+
+[node name="TitleColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 67.0
+offset_bottom = 25.0
+
 [node name="TitleLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 2.0
@@ -57,22 +87,22 @@ offset_top = 8.0
 offset_right = 82.0
 offset_bottom = 26.0
 text = "ICICLES GO
-BRRR"
+BRRRRR"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="StartLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 2.0
-offset_top = 30.0
+offset_top = 31.0
 offset_right = 82.0
-offset_bottom = 38.0
+offset_bottom = 39.0
 theme_override_fonts/font = ExtResource("1_1fh0e")
 text = "PRESS SPACE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="HighScoreColorRect" type="ColorRect" parent="."]
 layout_mode = 0
 offset_top = 41.0
 offset_right = 84.0
@@ -94,4 +124,3 @@ horizontal_alignment = 1
 libraries = {
 "": SubResource("AnimationLibrary_8vffg")
 }
-autoplay = "blink"

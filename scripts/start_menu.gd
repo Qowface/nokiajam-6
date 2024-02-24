@@ -7,6 +7,10 @@ extends Control
 func _ready():
 	Stats.reset()
 	$HighScoreLabel.text = "HIGH SCORE: " + str(Stats.high_score)
+	
+	animation.play("icicles")
+	await animation.animation_finished
+	animation.play("blink")
 
 
 func _process(delta):
