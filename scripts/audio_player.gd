@@ -2,6 +2,7 @@ extends Node
 
 
 var sfx_list = {
+	"coin": preload("res://assets/sfx/blip5.wav"),
 	"hit": preload("res://assets/sfx/hit3.wav")
 }
 

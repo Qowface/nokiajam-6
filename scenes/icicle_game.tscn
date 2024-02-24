@@ -132,5 +132,10 @@ one_shot = true
 
 [node name="IcicleTimer" type="Timer" parent="Timers"]
 
+[node name="CoinTimer" type="Timer" parent="Timers"]
+wait_time = 10.0
+autostart = true
+
 [connection signal="timeout" from="Timers/StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="Timers/IcicleTimer" to="." method="_on_icicle_timer_timeout"]
+[connection signal="timeout" from="Timers/CoinTimer" to="." method="_on_coin_timer_timeout"]

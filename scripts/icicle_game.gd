@@ -7,10 +7,13 @@ var score = 0
 var icicle_speed = 10
 var score_increment = 10
 
+var coin_scene = preload("res://scenes/coin.tscn")
+
 @onready var player = $Player
 @onready var icicles = $Icicles
 @onready var start_timer = $Timers/StartTimer
 @onready var icicle_timer = $Timers/IcicleTimer
+@onready var coin_timer = $Timers/CoinTimer
 @onready var ui = $UI
 
 
@@ -77,3 +80,25 @@ func speed_up_icicles():
 	print(score_increment)
 	for icicle in get_tree().get_nodes_in_group("icicles"):
 		icicle.fall_speed = icicle_speed
+
+
+func spawn_coin():
+	if get_tree().get_nodes_in_group("coins").size() > 0:
+		return
+	
+	var coin_instance = coin_scene.instantiate()
+	coin_instance.global_position = Vector2(randi_range(0, 77), 24)
+	coin_instance.scored.connect(_on_coin_scored)
+	add_child(coin_instance)
+
+
+func _on_coin_timer_timeout():
+	spawn_coin()
+	coin_timer.wait_time = randf_range(5.0, 10.0)
+
+
+func _on_coin_scored():
+	AudioPlayer.play_sfx("coin")
+	score += score_increment * 5
+	ui.set_score_label(score)
+	print("coin get - points: " + str(score_increment*5))
