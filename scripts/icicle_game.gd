@@ -2,7 +2,6 @@ extends Node2D
 
 
 var lives = 3
-var score = 0
 
 var icicle_speed = 10
 var score_increment = 10
@@ -24,7 +23,7 @@ func _ready():
 		icicle.hit_player.connect(_on_icicle_hit_player)
 		icicle.scored.connect(_on_icicle_scored)
 	
-	ui.set_score_label(score)
+	ui.set_score_label(Stats.score)
 	ui.update_hearts(lives)
 	ui.display_banner("GET READY")
 
@@ -59,8 +58,8 @@ func _on_icicle_hit_player():
 
 
 func _on_icicle_scored():
-	score += score_increment
-	ui.set_score_label(score)
+	Stats.score += score_increment
+	ui.set_score_label(Stats.score)
 	speed_up_icicles()
 
 
@@ -99,6 +98,6 @@ func _on_coin_timer_timeout():
 
 func _on_coin_scored():
 	AudioPlayer.play_sfx("coin")
-	score += score_increment * 5
-	ui.set_score_label(score)
+	Stats.score += score_increment * 5
+	ui.set_score_label(Stats.score)
 	print("coin get - points: " + str(score_increment*5))
