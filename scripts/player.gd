@@ -34,3 +34,7 @@ func _physics_process(delta):
 
 func die():
 	queue_free()
+
+
+func blink():
+	$AnimationPlayer.play("blink")
