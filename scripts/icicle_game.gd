@@ -48,6 +48,7 @@ func _on_icicle_timer_timeout():
 
 
 func _on_icicle_hit_player():
+	AudioPlayer.play_sfx("hit")
 	lives -= 1
 	ui.update_hearts(lives)
 	if lives <= 0:
