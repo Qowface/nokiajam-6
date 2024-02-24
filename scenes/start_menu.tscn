@@ -1,7 +1,45 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhbhbpc7a5qof"]
+[gd_scene load_steps=6 format=3 uid="uid://bhbhbpc7a5qof"]
 
 [ext_resource type="FontFile" uid="uid://cxeg4c7rwp2y3" path="res://assets/fonts/lowrez/lowrez.png" id="1_1fh0e"]
 [ext_resource type="Script" path="res://scripts/start_menu.gd" id="1_h3alx"]
+
+[sub_resource type="Animation" id="Animation_ofht1"]
+resource_name = "blink"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StartLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_a6x2x"]
+resource_name = "fast_blink"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StartLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8vffg"]
+_data = {
+"blink": SubResource("Animation_ofht1"),
+"fast_blink": SubResource("Animation_a6x2x")
+}
 
 [node name="StartMenu" type="Control"]
 layout_mode = 3
@@ -26,9 +64,9 @@ vertical_alignment = 1
 [node name="StartLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 2.0
-offset_top = 32.0
+offset_top = 30.0
 offset_right = 82.0
-offset_bottom = 40.0
+offset_bottom = 38.0
 theme_override_fonts/font = ExtResource("1_1fh0e")
 text = "PRESS SPACE"
 horizontal_alignment = 1
@@ -51,3 +89,9 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_1fh0e")
 text = "HIGH SCORE: 123456"
 horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8vffg")
+}
+autoplay = "blink"

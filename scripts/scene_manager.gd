@@ -18,6 +18,13 @@ func _ready():
 	}
 
 
+func _process(delta):
+	if Input.is_action_just_pressed("quit"):
+		get_tree().quit()
+	elif Input.is_action_just_pressed("reset"):
+		change_scene("start")
+
+
 func change_scene(scene_id: String):
 	var new_scene = scene_list[scene_id]
 	var scene_instance = new_scene.instantiate()

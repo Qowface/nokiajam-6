@@ -18,6 +18,7 @@ func _ready():
 	
 	await get_tree().create_timer(1.0).timeout
 	$RestartLabel.visible = true
+	$AnimationPlayer.play("blink")
 
 
 func _process(delta):
