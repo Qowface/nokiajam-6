@@ -15,6 +15,7 @@ func _ready():
 	if new_high_score:
 		await get_tree().create_timer(1.0).timeout
 		$NewHighScoreLabel.visible = true
+		AudioPlayer.play_sfx("highscore")
 	
 	await get_tree().create_timer(1.0).timeout
 	$RestartLabel.visible = true
@@ -23,4 +24,5 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_just_pressed("jump"):
+		AudioPlayer.play_sfx("start")
 		SceneManager.change_scene("start")
