@@ -6,6 +6,8 @@ func _ready():
 	$NewHighScoreLabel.visible = false
 	$RestartLabel.visible = false
 	
+	AudioPlayer.play_sfx("gameover")
+	
 	$ScoreLabel.text = "SCORE: " + str(Stats.score)
 	var new_high_score = Stats.check_high_score()
 	

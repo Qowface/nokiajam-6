@@ -29,7 +29,8 @@ func _physics_process(delta):
 
 	move_and_slide()
 	
-	position.x = clamp(position.x, 0, screen_size.x - 8)
+	position.x = clampi(position.x, 0, screen_size.x - 8)
+	position.y = roundi(position.y)
 
 
 func die():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cpxam4xk4egf2"]
+[gd_scene load_steps=6 format=3 uid="uid://cpxam4xk4egf2"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_aiv7m"]
 [ext_resource type="Texture2D" uid="uid://b3jm4vdrawplv" path="res://assets/img/player.png" id="2_15kh5"]
@@ -22,24 +22,8 @@ tracks/0/keys = {
 "values": [true, false, true, false, true]
 }
 
-[sub_resource type="Animation" id="Animation_1ym6s"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ttx57"]
 _data = {
-"RESET": SubResource("Animation_1ym6s"),
 "blink": SubResource("Animation_d7yww")
 }
 

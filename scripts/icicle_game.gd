@@ -17,8 +17,9 @@ var coin_scene = preload("res://scenes/coin.tscn")
 
 
 func _ready():
-	Stats.reset()
+	AudioPlayer.play_sfx("getready")
 	
+	Stats.reset()
 	start_timer.start()
 	
 	for icicle in get_tree().get_nodes_in_group("icicles"):
@@ -75,8 +76,6 @@ func game_over():
 func speed_up_icicles():
 	icicle_speed += 1
 	score_increment = floor(icicle_speed / 10) * 10
-	print(icicle_speed)
-	print(score_increment)
 	for icicle in get_tree().get_nodes_in_group("icicles"):
 		icicle.fall_speed = icicle_speed
 
@@ -100,4 +99,3 @@ func _on_coin_scored():
 	AudioPlayer.play_sfx("coin")
 	Stats.score += score_increment * 5
 	ui.set_score_label(Stats.score)
-	print("coin get - points: " + str(score_increment*5))
