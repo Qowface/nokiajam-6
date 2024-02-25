@@ -7,6 +7,10 @@ extends CanvasLayer
 @onready var banner_animation = $BannerAnimationPlayer
 
 
+func _ready():
+	$Paused.visible = false
+
+
 func set_score_label(score):
 	score_label.text = str(score)
 
@@ -22,3 +26,7 @@ func update_hearts(lives):
 func display_banner(text):
 	banner_label.text = text
 	banner_animation.play("banner")
+
+
+func toggle_paused(paused: bool):
+	$Paused.visible = paused

@@ -2,9 +2,9 @@ extends Node2D
 
 
 var lives = 3
-
 var icicle_speed = 10
 var score_increment = 10
+var playing: bool = false
 
 var coin_scene = preload("res://scenes/coin.tscn")
 
@@ -32,7 +32,9 @@ func _ready():
 
 
 func _process(delta):
-	pass
+	if Input.is_action_just_pressed("pause") and playing:
+		get_tree().paused = !get_tree().paused
+		ui.toggle_paused(get_tree().paused)
 
 
 func drop_random_icicle():
@@ -42,6 +44,7 @@ func drop_random_icicle():
 
 
 func _on_start_timer_timeout():
+	playing = true
 	icicle_timer.start()
 
 
@@ -65,6 +68,7 @@ func _on_icicle_scored():
 
 
 func game_over():
+	playing = false
 	player.die()
 	ui.display_banner("YOU DIED")
 	get_tree().paused = true

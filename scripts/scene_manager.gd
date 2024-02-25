@@ -19,9 +19,9 @@ func _ready():
 
 
 func _process(delta):
-	if Input.is_action_just_pressed("quit"):
+	if Input.is_action_just_pressed("quit") and OS.get_name() != "Web":
 		get_tree().quit()
-	elif Input.is_action_just_pressed("reset"):
+	elif Input.is_action_just_pressed("reset") and OS.is_debug_build():
 		change_scene("start")
 
 
